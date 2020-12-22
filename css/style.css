@@ -1,0 +1,218 @@
+* {
+    box-sizing: border-box;
+}
+
+#pano {
+    /*max-width: 440px !important;*/
+    max-height: 432px;
+    overflow: hidden;
+}
+
+#pano-tiles span {
+    cursor: crosshair;
+}
+
+#pano-tiles img {
+    width: 50px;
+    height: 50px;
+    border: 1px solid transparent;
+    object-fit: cover;
+}
+
+.nav-item a {
+    color: black;
+    font-weight: 600;
+}
+
+.select {
+    box-shadow: -1px 2px 3px 1px #999;
+}
+
+.select-radio {
+    box-shadow: -1px 2px 3px 1px #999;
+    cursor: pointer !important;
+}
+
+#color_1 img, #color_2 img, #color_3 img, #color_4 img, #color_5 img {
+    cursor: pointer !important;
+    width: 45px;
+}
+
+.calc {
+    height: 40px;
+}
+
+/*.calc-tiles {*/
+/*    height: 66px;*/
+/*}*/
+
+.percent {
+    border-radius: 5px;
+    height: 30px;
+    width: 50px;
+}
+
+.figure, #favcolor {
+    cursor: pointer;
+}
+
+.draggable {
+    position: absolute;
+    z-index: 1;
+    cursor: move;
+}
+
+input[name=field] {
+    display: none;
+}
+
+input[name=field] + label {
+    display: inline-block;
+    vertical-align: top;
+    width: 24px;
+    height: 24px;
+    border: 2px solid transparent;
+}
+
+.img_color {
+    width: 35px;
+    height: 35px;
+    border: 2px solid grey;
+}
+
+a.button-basket {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, 0.1em 0.1em 0.2em #8c8c8c;
+    background: url(../img/basket.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+a.button-basket:active {
+    top: .1em;
+    left: .1em;
+    box-shadow: 0 0 0 60px rgba(0, 0, 0, .05) inset;
+}
+
+.select .fade {
+    /*background: #8c8c8c;*/
+    /*opacity: 0.3;*/
+    z-index: 3;
+    width: 93%;
+    position: absolute;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.size_tiles, .size_area {
+    height: 28px;
+    font-size: 13px;
+}
+
+.opt-radio_1, .opt-radio_2, .opt-checkbox {
+    position: relative;
+    z-index: 2;
+    bottom: 0;
+    margin: 0;
+    width: 15px;
+    height: 15px;
+}
+
+.irs--big .irs-bar {
+    height: 12px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    background: transparent;
+    box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.irs-min, .irs-max {
+    display: none
+}
+
+.irs-handle.single {
+    cursor: pointer;
+}
+
+.irs--big .irs-grid-pol {
+    background-color: white;
+}
+
+.irs--big .irs-grid-text {
+    color: white;
+}
+
+#collections-tiles .select {
+    overflow-x: scroll;
+}
+
+/*style scroll*/
+::-webkit-scrollbar {
+    /* Let's get this party started */
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    /* Track */
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);*/
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    /* Handle */
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: grey;
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);*/
+    border: 1px solid transparent;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #4a4949;
+}
+
+/*::-webkit-scrollbar-thumb:window-inactive {*/
+/*    background-color: transparent;*/
+
+/*}*/
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    background: transparent;
+
+}
+
+::-webkit-scrollbar-track {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+
+}
+
+/*bg*/
+::-webkit-scrollbar-track-piece {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+
+}
+
+
+

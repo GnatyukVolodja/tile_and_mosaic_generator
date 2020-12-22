@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<!--    <link rel="icon" href="../../../../favicon.ico">-->
+    <title>generator</title>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="bg-light mx-auto">
+<div class="container bg-secondary my-5 p-4 mx-auto" style="position: fixed; left: 0; right: 0; z-index: 5;">
+    <ul class="nav nav-tabs text-center align-items-center justify-content-center w-100" id="myTab" role="tablist">
+        <li class="nav-item w-50" role="presentation">
+            <a class="nav-link active" id="calc-mosaic" data-toggle="tab" href="#mosaic" role="tab" aria-controls="mosaic" aria-selected="true">Калькулятор мозаїки</a>
+        </li>
+        <li class="nav-item w-50" role="presentation">
+            <a class="nav-link" id="calc-tiles" data-toggle="tab" href="#tiles" role="tab" aria-controls="tiles" aria-selected="false">Калькулятор плитки</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="mosaic" role="tabpanel" aria-labelledby="calc-mosaic">
+            <div class="row">
+                <div id="pano" class="col-sm-5 bg-light mt-5 p-0">
+                    <div class="table-responsive">
+                        <table id="table_pano" class="table table-bordered w-100 m-0">
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-sm-7 mt-5">
+                    <div class="select d-flex bg-light align-items-center justify-content-between calc px-4">
+                        <span>Вибір формату:</span>
+                        <span class="figure square_1_2"><img src="img/black_1_2.png"     onclick="square_1_2(this, '304')"  alt="square"  style="width: 25px;"></span>
+                        <span class="figure square_2_5"><img src="img/white_2_5.png"     onclick="square_2_5(this, '256')"  alt="square"  style="width: 30px;"></span>
+                        <span class="figure square_3_8"><img src="img/white_3_8.png"     onclick="square_3_8(this, '121')"  alt="square"  style="width: 35px;"></span>
+                        <span class="figure hexagon">   <img src="img/white_hexagon.png" onclick="hexagon_3_5(this, '64')" alt="hexagon" style="width: 35px;"></span>
+                        <span class="figure circle">    <img src="img/white_circle.png"  onclick="circle_2_5(this, '64')"  alt="circle"  style="width: 35px;"></span>
+                    </div>
+                    <div class="select d-flex bg-light align-items-center justify-content-between mt-3 calc px-4">
+                        <span>Вибір колекції та кольору: <button type="button" data-toggle="modal" class="btn btn-secondary py-0 px-1">колір 1</button></span>
+                        <span>
+                        <label for="quantity_1">Співвідношення: </label>
+                        <input type="text" id="quantity_1" data-id="1" class="mt-1 percent text-center" name="quantity" value="0"> %
+                </span>
+                        <span class="bg-light ml-3 img_color"><img src="/" class="img_color_1 w-100" alt=""></span>
+                    </div>
+                    <div class="select d-flex bg-light align-items-center justify-content-between mt-3 calc px-4">
+                        <span>Вибір колекції та кольору: <button type="button" data-toggle="modal" class="btn btn-secondary py-0 px-1">колір 2</button></span>
+                        <span>
+                        <label for="quantity_1">Співвідношення: </label>
+                        <input type="text" id="quantity_2" data-id="2" class="mt-1 percent text-center" name="quantity" value="0"> %
+                </span>
+                        <span class="bg-light ml-3 img_color"><img src="/" class="img_color_2 w-100" alt=""></span>
+                    </div>
+                    <div class="select d-flex bg-light align-items-center justify-content-between mt-3 calc px-4">
+                        <span>Вибір колекції та кольору: <button type="button" data-toggle="modal" class="btn btn-secondary py-0 px-1">колір 3</button></span>
+                        <span>
+                        <label for="quantity_1">Співвідношення: </label>
+                        <input type="text" id="quantity_3" data-id="3" class="mt-1 percent text-center" name="quantity" value="0"> %
+                </span>
+                        <span class="bg-light ml-3 img_color"><img src="/" class="img_color_3 w-100" alt=""></span>
+                    </div>
+                    <div class="select d-flex bg-light align-items-center justify-content-between mt-3 calc px-4">
+                        <span>Вибір колекції та кольору: <button type="button" data-toggle="modal" class="btn btn-secondary py-0 px-1">колір 4</button></span>
+                        <span>
+                        <label for="quantity_1">Співвідношення: </label>
+                        <input type="text" id="quantity_4" data-id="4" class="mt-1 percent text-center" name="quantity" value="0"> %
+                </span>
+                        <span class="bg-light ml-3 img_color"><img src="/" class="img_color_4 w-100" alt=""></span>
+                    </div>
+                    <div class="select d-flex bg-light align-items-center justify-content-between mt-3 calc px-4">
+                        <span>Вибір колекції та кольору: <button type="button" data-toggle="modal" class="btn btn-secondary py-0 px-1">колір 5</button></span>
+                        <span>
+                        <label for="quantity_1">Співвідношення: </label>
+                        <input type="text" id="quantity_5" data-id="5" class="mt-1 percent text-center" name="quantity" value="0"> %
+                </span>
+                        <span class="bg-light ml-3 img_color"><img src="/" class="img_color_5 w-100" alt=""></span>
+                    </div>
+                    <div class="select d-flex bg-light align-items-center justify-content-between mt-3 calc px-4">
+                        <span>Вибір колекції та кольору: <button type="button" data-toggle="modal" class="btn btn-secondary py-0 px-1">колір 6</button></span>
+                        <span>
+                        <label for="quantity_1">Співвідношення: </label>
+                        <input type="text" id="quantity_6" data-id="6" class="mt-1 percent text-center" name="quantity" value="0"> %
+                </span>
+                        <span class="bg-light ml-3 img_color"><img src="/" class="img_color_6 w-100" alt=""></span>
+                    </div>
+                    <div class="select d-flex bg-light align-items-center justify-content-between mt-3 calc px-4">
+                        <span>Колір стику:</span>
+                        <span><input type="radio" name="field" id="mc1"><label class="mb-0 select-radio bg-light" for="mc1"></label></span>
+                        <span><input type="radio" name="field" id="mc2"><label class="mb-0 select-radio bg-secondary" for="mc2"></label></span>
+                        <span><input type="radio" name="field" id="mc3"><label class="mb-0 select-radio bg-dark" for="mc3"></label></span>
+                        <span><input type="radio" name="field" id="mc4"><label class="mb-0 select-radio bg-danger" for="mc4"></label></span>
+                        <span><input type="radio" name="field" id="mc5"><label class="mb-0 select-radio bg-warning" for="mc5"></label></span>
+                        <span><input type="radio" name="field" id="mc6"><label class="mb-0 select-radio bg-success" for="mc6"></label></span>
+                        <span><input type="radio" name="field" id="mc7"><label class="mb-0 select-radio bg-primary" for="mc7"></label></span>
+                        <span>Товщина стику:</span>
+                        <select id="thinks" name="border">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mx-auto d-block mt-3 mb-3 text-center">
+                    <p style="font-weight: 500;"><span id="res" class="text-danger" style="font-weight: 500;">0%</span> Загальна сума відсотків має складати 99-101</p>
+                    <button type="button" id="generate" class="btn bg-light text-dark py-0 mx-3 px-1" disabled>Згенерувати палітру</button>
+                    <button type="button" id="reset" class="btn bg-light text-dark py-0 mx-3 px-1">Скинути всі фільтри</button>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="tiles" role="tabpanel" aria-labelledby="calc-tiles">
+            <div class="row">
+                <div class="col-7 mt-3">
+                    <div id="collections-tiles"></div>
+                </div>
+                <div class="col-5">
+                    <div class="row">
+                                    <div class="col-4 mt-3 d-flex align-items-center justify-content-center flex-column">
+                                        <input type="text" class="form-control mb-1 size_tiles size_area" value="500" placeholder="Ширина поля см." id="width_area">
+                                        <input type="text" class="form-control mb-1 size_tiles size_area" value="500" placeholder="Висота поля см." id="height_area">
+                                    </div>
+                                    <div class="col-4 mt-3 d-flex align-items-center justify-content-center flex-column">
+                                        <input type="text" class="form-control mb-1 size_tiles" value="50" placeholder="Ширина плитки см." id="width_tiles">
+                                        <input type="text" class="form-control mb-1 size_tiles" value="35" placeholder="Висота плитки см." id="height_tiles">
+                                    </div>
+                                    <div class="col-4 mt-3 d-flex align-items-center justify-content-center flex-column">
+                                        <div class="d-flex align-items-center justify-content-center calc-tiles">
+                                            <span class="basket ui-widget-content">
+                                                <a href="#" class="button-basket"></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                        <p class="col-8 m-0"><input type="text" class="js-range-slider w-100" name="my_range" value="" /> </p>
+                        <span class="col-4 m-0 text-center">
+                            <b class="my-2 text-white"><label for="favcolor" class="m-0">Колір стику</label></b>
+                            <input type="color" id="favcolor" class="m-2" name="favcolor" value="#fff700" list="colors">
+                                <datalist id="colors">
+                                  <option>#dc3545</option>
+                                  <option>#fd7e14</option>
+                                  <option>#ffc107</option>
+                                  <option>#28a745</option>
+                                  <option>#0CADFF</option>
+                                  <option>#007bff</option>
+                                  <option>#6f42c1</option>
+                                  <option>#000000</option>
+                                  <option>#FFFFFF</option>
+                                  <option>#6c757d</option>
+                                </datalist>
+                        </span>
+                    </div>
+                </div>
+                <p class="my-1 col-12 d-flex align-items-center justify-content-around">
+                    <b class="my-2 text-white">Розмір плитки: <span id="size-width">0</span> x <span id="size-height">0</span> см.</b>
+                    <b class="my-2 text-white">Розміри поля: <span id="size-width-pano">0</span> x <span id="size-height-pano">0</span> см.</b>
+                    <b class="my-2 text-white">Площа цілих плиток: <span id="area-tiles">0</span> м.кв.</b>
+<!--                    <b class="my-2 text-white">Кількість плиток: <span id="count-tiles">0 </span> + ( <span id="cutting">0 - </span> на порізку ) </b>-->
+                    <b class="my-2 text-white" id="res_count_tiles">Кількість цілих плиток: 0 </b>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="pano-tiles" class="col-12 bg-light mx-auto d-none mb-3" style="position: absolute; left: 0; right: 0; top: 375px;"></div>
+
+
+<!-- Modal mosaic-->
+<div class="modal fade" id="color_1"  tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel1">Колір 1</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <ul class="nav d-flex align-items-center justify-content-around">
+                        <li class="nav-item">
+                            <img src="img/mosaic_1_2/red_1_2.png" onclick="mosaic_img('img/mosaic_1_2/red_1_2.png', '.img_color_1')" alt="red">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/mosaic_1_2/blue_1_2.png" onclick="mosaic_img('img/mosaic_1_2/blue_1_2.png', '.img_color_2')" alt="blue">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/mosaic_1_2/grey_1_2.png" onclick="mosaic_img('img/mosaic_1_2/grey_1_2.png', '.img_color_3')" alt="grey">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/mosaic_1_2/black_1_2.png" onclick="mosaic_img('img/mosaic_1_2/black_1_2.png', '.img_color_4')" alt="black">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/mosaic_1_2/yellow_1_2.png" onclick="mosaic_img('img/mosaic_1_2/yellow_1_2.png', '.img_color_5')" alt="yellow">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="color_2" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel2">Колір 2</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <ul class="nav d-flex align-items-center justify-content-around">
+                        <li class="nav-item">
+                            <img src="img/mosaic_2_5/red_2_5.png" onclick="mosaic_img('img/mosaic_2_5/red_2_5.png', '.img_color_1')" alt="red">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/mosaic_2_5/blue_2_5.png" onclick="mosaic_img('img/mosaic_2_5/blue_2_5.png', '.img_color_2')" alt="blue">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/mosaic_2_5/grey_2_5.png" onclick="mosaic_img('img/mosaic_2_5/grey_2_5.png', '.img_color_3')" alt="grey">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/mosaic_2_5/black_2_5.png" onclick="mosaic_img('img/mosaic_2_5/black_2_5.png', '.img_color_4')" alt="black">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/mosaic_2_5/yellow_2_5.png" onclick="mosaic_img('img/mosaic_2_5/yellow_2_5.png', '.img_color_5')" alt="yellow">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="color_3" tabindex="-1" aria-labelledby="staticBackdropLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel3">Колір 3</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <ul class="nav d-flex align-items-center justify-content-around">
+                            <li class="nav-item">
+                                <img src="img/mosaic_3_8/red_3_8.png" onclick="mosaic_img('img/mosaic_3_8/red_3_8.png', '.img_color_1')" alt="red">
+                            </li>
+                            <li class="nav-item">
+                                <img src="img/mosaic_3_8/blue_3_8.png" onclick="mosaic_img('img/mosaic_3_8/blue_3_8.png', '.img_color_2')" alt="blue">
+                            </li>
+                            <li class="nav-item">
+                                <img src="img/mosaic_3_8/grey_3_8.png" onclick="mosaic_img('img/mosaic_3_8/grey_3_8.png', '.img_color_3')" alt="grey">
+                            </li>
+                            <li class="nav-item">
+                                <img src="img/mosaic_3_8/black_3_8.png" onclick="mosaic_img('img/mosaic_3_8/black_3_8.png', '.img_color_4')" alt="black">
+                            </li>
+                            <li class="nav-item">
+                                <img src="img/mosaic_3_8/yellow_3_8.png" onclick="mosaic_img('img/mosaic_3_8/yellow_3_8.png', '.img_color_5')" alt="yellow">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="color_4" tabindex="-1" aria-labelledby="staticBackdropLabel4" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel4">Колір 4</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <ul class="nav d-flex align-items-center justify-content-around">
+                        <li class="nav-item">
+                            <img src="img/hexagon/hexagon_red.png" onclick="mosaic_img('img/hexagon/hexagon_red.png', '.img_color_1')" alt="red">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/hexagon/hexagon_blue.png" onclick="mosaic_img('img/hexagon/hexagon_blue.png', '.img_color_2')" alt="blue">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/hexagon/hexagon_grey.png" onclick="mosaic_img('img/hexagon/hexagon_grey.png', '.img_color_3')" alt="grey">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/hexagon/hexagon_black.png" onclick="mosaic_img('img/hexagon/hexagon_black.png', '.img_color_4')" alt="black">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/hexagon/hexagon_yellow.png" onclick="mosaic_img('img/hexagon/hexagon_yellow.png', '.img_color_5')" alt="yellow">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="color_5" tabindex="-1" aria-labelledby="staticBackdropLabel5" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel5">Колір 5</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <ul class="nav d-flex align-items-center justify-content-around">
+                        <li class="nav-item">
+                            <img src="img/circle/circle_red.png" onclick="mosaic_img('img/circle/circle_red.png', '.img_color_1')" alt="red">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/circle/circle_blue.png" onclick="mosaic_img('img/circle/circle_blue.png', '.img_color_2')" alt="blue">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/circle/circle_grey.png" onclick="mosaic_img('img/circle/circle_grey.png', '.img_color_3')" alt="grey">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/circle/circle_black.png" onclick="mosaic_img('img/circle/circle_black.png', '.img_color_4')" alt="black">
+                        </li>
+                        <li class="nav-item">
+                            <img src="img/circle/circle_yellow.png" onclick="mosaic_img('img/circle/circle_yellow.png', '.img_color_5')" alt="yellow">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="color_6" tabindex="-1" aria-labelledby="staticBackdropLabel6" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel6">Колір 6</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+
+
+    function mosaic_img(link, color) {
+        $(`${color}`).attr("src", link);
+        $('.close').each(function (i, a) {
+            $(a).click();
+        })
+    }
+
+    function load_modal() {
+        if ($('.square_1_2 img').attr('src') == "img/black_1_2.png") {
+            $('.select button').each(function (i, a) {
+                $(a).attr('data-target', '#color_1')
+            });
+        } else if ($('.square_2_5 img').attr('src') == "img/black_2_5.png") {
+            $('.select button').each(function (i, a) {
+                $(a).attr('data-target', '#color_2')
+            });
+        } else if ($('.square_3_8 img').attr('src') == "img/black_3_8.png") {
+            $('.select button').each(function (i, a) {
+                $(a).attr('data-target', '#color_3')
+            });
+        } else if ($('.hexagon img').attr('src') == "img/black_hexagon.png") {
+            $('.select button').each(function (i, a) {
+                $(a).attr('data-target', '#color_4')
+            });
+        } else if ($('.circle img').attr('src') == "img/black_circle.png") {
+            $('.select button').each(function (i, a) {
+                $(a).attr('data-target', '#color_5')
+            });
+        }
+        $('#table_pano tbody').html('');
+        $('.img_color img').each(function (i, e) {
+            $(e).attr("src", "");
+        });
+    }
+
+    load_modal();
+
+
+    function square_1_2(img, count) {
+        $('.square_2_5 img').attr("src", "img/white_2_5.png");
+        $('.square_3_8 img').attr("src", "img/white_3_8.png");
+        $('.hexagon img').attr("src", "img/white_hexagon.png");
+        $('.circle img').attr("src", "img/white_circle.png");
+        if ($(img).attr("src") == "img/white_1_2.png") {
+            $(img).attr("src", "img/black_1_2.png");
+        } else {
+            $(img).attr("src", "img/white_1_2.png");
+        }
+        $('#pano').css("max-height", "432px");
+        max_count_mosaic = count;
+        load_modal();
+    }
+
+    function square_2_5(img, count) {
+        $('.square_1_2 img').attr("src", "img/white_1_2.png");
+        $('.square_3_8 img').attr("src", "img/white_3_8.png");
+        $('.hexagon img').attr("src", "img/white_hexagon.png");
+        $('.circle img').attr("src", "img/white_circle.png");
+        if ($(img).attr("src") == "img/white_2_5.png") {
+            $(img).attr("src", "img/black_2_5.png");
+        } else {
+            $(img).attr("src", "img/white_2_5.png");
+        }
+        $('#pano').css("max-height", "428px");
+        max_count_mosaic = count;
+        load_modal();
+    }
+
+    function square_3_8(img, count) {
+        $('.square_1_2 img').attr("src", "img/white_1_2.png");
+        $('.square_2_5 img').attr("src", "img/white_2_5.png");
+        $('.hexagon img').attr("src", "img/white_hexagon.png");
+        $('.circle img').attr("src", "img/white_circle.png");
+        if ($(img).attr("src") == "img/white_3_8.png") {
+            $(img).attr("src", "img/black_3_8.png");
+        } else {
+            $(img).attr("src", "img/white_3_8.png");
+        }
+        $('#pano').css("max-height", "440px ");
+        max_count_mosaic = count;
+        load_modal();
+    }
+
+    function hexagon_3_5(img, count) {
+        $('.square_1_2 img').attr("src", "img/white_1_2.png");
+        $('.square_2_5 img').attr("src", "img/white_2_5.png");
+        $('.square_3_8 img').attr("src", "img/white_3_8.png");
+        $('.circle img').attr("src", "img/white_circle.png");
+        if ($(img).attr("src") == "img/white_hexagon.png") {
+            $(img).attr("src", "img/black_hexagon.png");
+        } else {
+            $(img).attr("src", "img/white_hexagon.png");
+        }
+        $('#pano').css("max-height", "416px");
+        max_count_mosaic = count;
+        load_modal();
+    }
+
+    function circle_2_5(img, count) {
+        $('.square_1_2 img').attr("src", "img/white_1_2.png");
+        $('.square_2_5 img').attr("src", "img/white_2_5.png");
+        $('.square_3_8 img').attr("src", "img/white_3_8.png");
+        $('.hexagon img').attr("src", "img/white_hexagon.png");
+        if ($(img).attr("src") == "img/white_circle.png") {
+            $(img).attr("src", "img/black_circle.png");
+        } else {
+            $(img).attr("src", "img/white_circle.png");
+        }
+        $('#pano').css("max-height", "416px");
+        max_count_mosaic = count;
+        load_modal();
+    }
+
+    $(document).ready(function(){
+        $("body").css("-webkit-user-select","none");
+        $("body").css("-moz-user-select","none");
+        $("body").css("-ms-user-select","none");
+        $("body").css("-o-user-select","none");
+        $("body").css("user-select","none");
+    });
+</script>
+
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="js/mosaic.js"></script>
+<script src="js/tiles.js"></script>
+
+</body>
+
+</html>
